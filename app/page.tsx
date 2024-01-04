@@ -6,6 +6,14 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const cursorRef = useRef<HTMLDivElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  const handleInput = () => {
+    if (!textareaRef.current) return
+
+    textareaRef.current.style.height = 'auto'
+    textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px'
+  }
 
   const autoAppend = async () => {
     const delay = async (time: number) => {
@@ -84,7 +92,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto space-y-4">
       <div className="p-4 border rounded">
         <div ref={containerRef} className="relative">
           <div ref={textRef}>0</div>
@@ -96,6 +104,13 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <textarea
+        ref={textareaRef}
+        className="p-2 border rounded resize-none overflow-hidden"
+        rows={1}
+        onInput={handleInput}
+      ></textarea>
     </div>
   )
 }
