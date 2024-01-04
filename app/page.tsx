@@ -98,7 +98,7 @@ export default function Home() {
           <div ref={textRef}>0</div>
           <div
             ref={cursorRef}
-            className="absolute left-0 top-0 inline-block bg-black"
+            className="absolute left-0 top-0 bg-black"
           >
             0
           </div>
